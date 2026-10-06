@@ -321,14 +321,29 @@ img, svg {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
-  background: linear-gradient(135deg, var(--primary), var(--accent-cyan));
-  color: #ffffff;
-  border-radius: var(--radius-sm);
-  font-weight: 800;
-  font-size: 0.95rem;
-  box-shadow: 0 4px 12px var(--primary-glow);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(96, 165, 250, 0.7);
+  box-shadow: 0 0 14px rgba(37, 99, 235, 0.35);
+  flex-shrink: 0;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+  background: radial-gradient(circle at center, #0d1a3a 0%, #090d16 100%);
+}
+
+.brand-link:hover .brand-badge {
+  transform: scale(1.08);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+}
+
+.brand-badge-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
 }
 
 .brand-text {
