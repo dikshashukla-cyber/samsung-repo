@@ -1910,6 +1910,534 @@ img, svg {
 }
 
 /* --------------------------------------------------------------------------
+   14B. SAMSUNG TOP PERFORMER & ADVANCED INTERACTIVE SUITE
+   -------------------------------------------------------------------------- */
+
+/* 1. Hero Particle Canvas Background */
+.hero-particle-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.65;
+}
+
+.hero-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* 2. Samsung Top Performer Evaluator Banner */
+.evaluator-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(6, 182, 212, 0.08));
+  border: 1px solid rgba(96, 165, 250, 0.35);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.25rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.evaluator-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.evaluator-medal-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.45);
+  flex-shrink: 0;
+}
+
+.evaluator-banner-title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.evaluator-pill-rank {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.5rem;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-radius: 12px;
+  color: #34d399;
+  font-size: 0.6875rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.evaluator-banner-desc {
+  font-size: 0.78125rem;
+  color: var(--text-muted);
+}
+
+.evaluator-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.evaluator-btn-scorecard {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.95rem;
+  background: linear-gradient(135deg, var(--primary), var(--accent-cyan));
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 14px var(--primary-glow);
+  transition: all var(--transition-fast);
+}
+
+.evaluator-btn-scorecard:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px var(--primary-glow);
+}
+
+/* 3. Header Action Controls Upgrade (Sound & Terminal) */
+.sound-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.65rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.sound-toggle-btn:hover {
+  color: var(--text-main);
+  border-color: var(--border-hover);
+}
+
+.sound-toggle-btn.sound-on {
+  color: var(--accent-cyan);
+  border-color: rgba(6, 182, 212, 0.5);
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.25);
+}
+
+.dev-console-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.75rem;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-radius: var(--radius-sm);
+  color: #34d399;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.dev-console-btn:hover {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: rgba(16, 185, 129, 0.5);
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.3);
+  transform: translateY(-1px);
+}
+
+.dev-console-btn kbd {
+  display: inline-block;
+  font-size: 0.65rem;
+  padding: 0.1rem 0.3rem;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+  color: var(--text-muted);
+}
+
+/* 4. 3D Card Perspective & Specular Glow */
+.card-3d-tilt {
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, box-shadow var(--transition-smooth);
+  will-change: transform;
+}
+
+.specular-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.specular-glow::before {
+  content: '';
+  position: absolute;
+  top: var(--mouse-y, -100%);
+  left: var(--mouse-x, -100%);
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.15) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: 1;
+}
+
+.specular-glow:hover::before {
+  opacity: 1;
+}
+
+/* 5. Live Architecture Modal & Scorecard Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 7, 18, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 1.25rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-window {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.7), 0 0 50px rgba(37, 99, 235, 0.2);
+  width: 100%;
+  max-width: 720px;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: scale(0.94) translateY(12px);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-overlay.active .modal-window {
+  transform: scale(1) translateY(0);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-card);
+}
+
+.modal-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  color: var(--text-main);
+}
+
+.modal-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.35rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.modal-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Terminal Modal Styling */
+.terminal-window {
+  background: #060913;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-radius: var(--radius-lg);
+  font-family: 'JetBrains Mono', 'Fira Code', var(--font-mono);
+  color: #34d399;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.8), 0 0 40px rgba(16, 185, 129, 0.15);
+}
+
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  background: #090e1c;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.terminal-dots {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.terminal-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.terminal-dot.red { background: #ef4444; }
+.terminal-dot.yellow { background: #f59e0b; }
+.terminal-dot.green { background: #10b981; }
+
+.terminal-bar-title {
+  font-size: 0.8125rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.terminal-screen {
+  padding: 1.25rem;
+  min-height: 260px;
+  max-height: 380px;
+  overflow-y: auto;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.terminal-line {
+  margin-bottom: 0.45rem;
+  word-break: break-word;
+}
+
+.terminal-prompt {
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+.terminal-cmd {
+  color: #f1f5f9;
+  font-weight: 600;
+}
+
+.terminal-output {
+  color: #cbd5e1;
+  white-space: pre-wrap;
+  padding-left: 0.5rem;
+  border-left: 2px solid rgba(56, 189, 248, 0.3);
+  margin-top: 0.25rem;
+}
+
+.terminal-input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: #090e1c;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.875rem;
+  outline: none;
+}
+
+.terminal-quick-cmds {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0.65rem 1.25rem;
+  background: #070b16;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.terminal-btn-chip {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #34d399;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.terminal-btn-chip:hover {
+  background: rgba(16, 185, 129, 0.28);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Scorecard Grid */
+.scorecard-summary-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.scorecard-metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.scorecard-metric-num {
+  font-size: 1.75rem;
+  font-weight: 800;
+  font-family: var(--font-heading);
+  background: linear-gradient(135deg, var(--primary), var(--accent-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.scorecard-metric-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.scorecard-modules-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.scorecard-module-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+}
+
+.scorecard-module-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.scorecard-module-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #10b981;
+  font-family: var(--font-mono);
+}
+
+/* Architecture Specs Modal */
+.arch-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.arch-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
+
+.arch-card h4 {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.arch-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.arch-metric-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.arch-pill {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  padding: 0.25rem 0.6rem;
+  background: rgba(37, 99, 235, 0.12);
+  border: 1px solid rgba(37, 99, 235, 0.3);
+  border-radius: 4px;
+  color: var(--accent-cyan);
+}
+
+/* --------------------------------------------------------------------------
    15. ACCESSIBILITY & PREFERS-REDUCED-MOTION (TR-10, TR-11)
    -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
