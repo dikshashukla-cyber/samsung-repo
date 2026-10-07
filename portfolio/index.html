@@ -181,12 +181,23 @@
             <span>Samsung Innovation Campus • Web Specialist</span>
           </div>
 
+          <!-- Live Status & IST Time Chip -->
+          <div class="live-status-chip" id="live-status-chip">
+            <span class="live-pulse-dot" aria-hidden="true"></span>
+            <span class="live-time-val" id="live-ist-time">--:--:-- IST</span>
+            <span class="live-divider">•</span>
+            <span class="live-status-text">Available for Web &amp; AI Engineering Roles</span>
+          </div>
+
           <h1 id="hero-heading" class="hero-title">
             Hi, I’m <span class="name-highlight">Diksha Shukla</span>
           </h1>
 
           <div class="hero-role">
-            <span>Frontend Developer &amp; Web Innovator</span>
+            <span class="typing-role-wrapper">
+              <span id="typing-role" class="typing-role-text">Frontend Developer &amp; Web Innovator</span>
+              <span class="typing-cursor" aria-hidden="true"></span>
+            </span>
           </div>
 
           <p class="hero-tagline">
@@ -1237,6 +1248,26 @@
       </div>
     </div>
   </div>
+
+  <!-- Ambient Smooth Background Cursor Follower Glow -->
+  <div id="ambient-cursor-glow" class="ambient-cursor-glow" aria-hidden="true"></div>
+
+  <!-- Ultra-Modern Floating Action Dock -->
+  <aside id="floating-dock" class="floating-dock" aria-label="Quick Navigation and Tools">
+    <button id="dock-top-btn" class="dock-btn" type="button" aria-label="Scroll back to top" title="Scroll to Top">
+      <svg class="dock-scroll-ring" viewBox="0 0 40 40" aria-hidden="true">
+        <circle class="dock-scroll-circle-bg" cx="20" cy="20" r="18"></circle>
+        <circle id="dock-scroll-progress" class="dock-scroll-circle-val" cx="20" cy="20" r="18"></circle>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+    <button id="dock-terminal-btn" class="dock-btn" type="button" aria-label="Open Developer Terminal" title="Developer Terminal (Ctrl+K)">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+    </button>
+    <button id="dock-sound-btn" class="dock-btn" type="button" aria-label="Toggle Sound Effects" title="Sound Effects">
+      <span id="dock-sound-icon" aria-hidden="true" style="font-size: 1rem;">🔇</span>
+    </button>
+  </aside>
 
   <!-- Main JavaScript Controller (TR-11: Lightweight & Deferred) -->
   <script src="js/script.js" defer></script>

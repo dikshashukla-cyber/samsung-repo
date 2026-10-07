@@ -2438,6 +2438,243 @@ img, svg {
 }
 
 /* --------------------------------------------------------------------------
+   14B. ULTRA-MODERN INTERACTIVITY & SMOOTH DYNAMICS SUITE
+   -------------------------------------------------------------------------- */
+
+/* Ambient Interactive Spotlight on Cards */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  background: radial-gradient(500px circle at var(--mouse-x, -999px) var(--mouse-y, -999px), rgba(96, 165, 250, 0.16), transparent 50%);
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+/* Ambient Cursor Glow (Background Follower) */
+.ambient-cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, rgba(6, 182, 212, 0.05) 45%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.4s ease;
+  filter: blur(40px);
+  will-change: transform;
+}
+
+[data-theme="light"] .ambient-cursor-glow {
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, rgba(6, 182, 212, 0.03) 45%, transparent 70%);
+}
+
+/* Hero Role Typing Animation */
+.typing-role-wrapper {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.8em;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--accent-cyan);
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1.2em;
+  background-color: var(--accent-cyan);
+  margin-left: 4px;
+  animation: blinkCursor 0.9s infinite;
+  vertical-align: middle;
+}
+
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Live Status & IST Clock Chip */
+.live-status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 0.35rem 0.95rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-main);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  margin-bottom: var(--space-md);
+  box-shadow: 0 2px 10px rgba(16, 185, 129, 0.1);
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.live-status-chip:hover {
+  transform: translateY(-2px);
+  border-color: rgba(16, 185, 129, 0.6);
+}
+
+.live-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 10px #10b981;
+  animation: pulseGreenGlow 2s infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulseGreenGlow {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.live-time-val {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: #10b981;
+  letter-spacing: -0.01em;
+}
+
+.live-divider {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+.live-status-text {
+  color: var(--text-secondary);
+}
+
+/* Floating Action Dock at Bottom Right */
+.floating-dock {
+  position: fixed;
+  bottom: 1.75rem;
+  right: 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-highlight);
+  border-radius: var(--radius-full);
+  padding: 0.4rem 0.6rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 20px rgba(37, 99, 235, 0.2);
+  z-index: 999;
+  transform: translateY(120px);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.floating-dock.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.dock-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dock-btn:hover {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary-light);
+  transform: scale(1.12);
+  box-shadow: 0 4px 14px var(--primary-glow);
+}
+
+.dock-btn svg {
+  width: 17px;
+  height: 17px;
+}
+
+.dock-scroll-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+
+.dock-scroll-circle-bg {
+  stroke: rgba(148, 163, 184, 0.15);
+  stroke-width: 2.5;
+  fill: none;
+}
+
+.dock-scroll-circle-val {
+  stroke: var(--accent-cyan);
+  stroke-width: 2.5;
+  stroke-dasharray: 113.1;
+  stroke-dashoffset: 113.1;
+  stroke-linecap: round;
+  fill: none;
+  transition: stroke-dashoffset 0.1s linear;
+}
+
+/* Magnetic Button Physics */
+.btn-magnetic {
+  display: inline-flex;
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+/* Smooth Project Filter Transitions */
+.project-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.project-card.filter-hide {
+  opacity: 0 !important;
+  transform: scale(0.92) translateY(20px) !important;
+  pointer-events: none;
+  position: absolute;
+  visibility: hidden;
+}
+
+.project-card.filter-show {
+  opacity: 1 !important;
+  transform: scale(1) translateY(0) !important;
+  visibility: visible;
+}
+
+/* --------------------------------------------------------------------------
    15. ACCESSIBILITY & PREFERS-REDUCED-MOTION (TR-10, TR-11)
    -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {

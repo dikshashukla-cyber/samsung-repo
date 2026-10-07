@@ -1031,6 +1031,226 @@ Status:       Recommended for Top Capstone Honor Award`);
   }
 
   // --------------------------------------------------------------------------
+  // 19. ULTRA-MODERN DYNAMICS: TYPING ROLE SCRAMBLER
+  // --------------------------------------------------------------------------
+  function initTypingRole() {
+    const roleEl = document.getElementById('typing-role');
+    if (!roleEl) return;
+
+    const titles = [
+      'Frontend Developer & Web Innovator',
+      'Samsung Innovation Campus Scholar',
+      'AI & Web System Specialist',
+      'Pixel-Perfect UI Architect',
+      'Clean Vanilla JavaScript Engineer'
+    ];
+
+    let titleIdx = 0;
+    let charIdx = 0;
+    let isDeleting = false;
+    let typingSpeed = 75;
+
+    function tick() {
+      const currentTitle = titles[titleIdx];
+
+      if (isDeleting) {
+        charIdx--;
+        roleEl.textContent = currentTitle.substring(0, charIdx);
+        typingSpeed = 35;
+      } else {
+        charIdx++;
+        roleEl.textContent = currentTitle.substring(0, charIdx);
+        typingSpeed = 70;
+      }
+
+      if (!isDeleting && charIdx === currentTitle.length) {
+        typingSpeed = 2200;
+        isDeleting = true;
+      } else if (isDeleting && charIdx === 0) {
+        isDeleting = false;
+        titleIdx = (titleIdx + 1) % titles.length;
+        typingSpeed = 400;
+      }
+
+      setTimeout(tick, typingSpeed);
+    }
+
+    tick();
+  }
+
+  // --------------------------------------------------------------------------
+  // 20. LIVE BENGALURU / IST TIME & AVAILABILITY TICKER
+  // --------------------------------------------------------------------------
+  function initLiveStatusClock() {
+    const timeEl = document.getElementById('live-ist-time');
+    if (!timeEl) return;
+
+    function updateTime() {
+      try {
+        const now = new Date();
+        const options = {
+          timeZone: 'Asia/Kolkata',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: true
+        };
+        const formatter = new Intl.DateTimeFormat('en-IN', options);
+        timeEl.textContent = formatter.format(now) + ' IST';
+      } catch (e) {
+        timeEl.textContent = 'IST • Available Now';
+      }
+    }
+
+    updateTime();
+    setInterval(updateTime, 1000);
+  }
+
+  // --------------------------------------------------------------------------
+  // 21. AMBIENT CURSOR GLOW & DYNAMIC CARD SPOTLIGHT
+  // --------------------------------------------------------------------------
+  function initAmbientSpotlightAndCursor() {
+    const ambientGlow = document.getElementById('ambient-cursor-glow');
+    let targetX = window.innerWidth / 2;
+    let targetY = window.innerHeight / 2;
+    let currentX = targetX;
+    let currentY = targetY;
+    let isMoving = false;
+
+    function renderGlow() {
+      currentX += (targetX - currentX) * 0.12;
+      currentY += (targetY - currentY) * 0.12;
+      if (ambientGlow) {
+        ambientGlow.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+      }
+      requestAnimationFrame(renderGlow);
+    }
+    renderGlow();
+
+    window.addEventListener('mousemove', function (e) {
+      targetX = e.clientX;
+      targetY = e.clientY;
+      if (!isMoving && ambientGlow) {
+        ambientGlow.style.opacity = '1';
+        isMoving = true;
+      }
+    }, { passive: true });
+
+    window.addEventListener('mouseleave', function () {
+      if (ambientGlow) ambientGlow.style.opacity = '0';
+      isMoving = false;
+    });
+
+    const spotlightElements = document.querySelectorAll(
+      '.project-card, .skill-card, .evaluator-banner, .about-card, .phase-card, .contact-form-card, .hero-card-frame, .arch-card, .feature-card'
+    );
+
+    spotlightElements.forEach(function (card) {
+      card.classList.add('spotlight-card');
+      card.addEventListener('mousemove', function (e) {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', x + 'px');
+        card.style.setProperty('--mouse-y', y + 'px');
+      });
+    });
+  }
+
+  // --------------------------------------------------------------------------
+  // 22. ULTRA-MODERN FLOATING DOCK & SCROLL PROGRESS
+  // --------------------------------------------------------------------------
+  function initFloatingDock() {
+    const dock = document.getElementById('floating-dock');
+    const dockTopBtn = document.getElementById('dock-top-btn');
+    const dockTerminalBtn = document.getElementById('dock-terminal-btn');
+    const dockSoundBtn = document.getElementById('dock-sound-btn');
+    const dockSoundIcon = document.getElementById('dock-sound-icon');
+    const dockProgressRing = document.getElementById('dock-scroll-progress');
+    const totalCircumference = 113.1;
+
+    function updateDock() {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progressPercent = scrollHeight > 0 ? Math.min(100, Math.max(0, (scrollTop / scrollHeight) * 100)) : 0;
+
+      if (dock) {
+        if (scrollTop > 280) {
+          dock.classList.add('visible');
+        } else {
+          dock.classList.remove('visible');
+        }
+      }
+
+      if (dockProgressRing) {
+        const offset = totalCircumference - (totalCircumference * progressPercent / 100);
+        dockProgressRing.style.strokeDashoffset = offset;
+      }
+    }
+
+    window.addEventListener('scroll', updateDock, { passive: true });
+    updateDock();
+
+    if (dockTopBtn) {
+      dockTopBtn.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (typeof playUiSound === 'function') playUiSound('toggle');
+      });
+    }
+
+    if (dockTerminalBtn) {
+      dockTerminalBtn.addEventListener('click', function () {
+        const terminalModal = document.getElementById('terminal-modal');
+        if (terminalModal) {
+          terminalModal.classList.add('active');
+          terminalModal.setAttribute('aria-hidden', 'false');
+          const input = document.getElementById('terminal-input');
+          if (input) setTimeout(() => input.focus(), 80);
+          if (typeof playUiSound === 'function') playUiSound('toggle');
+        }
+      });
+    }
+
+    if (dockSoundBtn) {
+      dockSoundBtn.addEventListener('click', function () {
+        const mainSoundBtn = document.getElementById('sound-toggle-btn');
+        if (mainSoundBtn) mainSoundBtn.click();
+        if (dockSoundIcon) {
+          dockSoundIcon.textContent = isSoundEnabled ? '🔊' : '🔇';
+        }
+      });
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // 23. MAGNETIC INTERACTION PHYSICS ON BUTTONS
+  // --------------------------------------------------------------------------
+  function initMagneticButtons() {
+    const magneticBtns = document.querySelectorAll(
+      '.btn-primary, .btn-secondary, .nav-cta-btn, .evaluator-btn-scorecard, .brand-badge'
+    );
+
+    magneticBtns.forEach(function (btn) {
+      btn.classList.add('btn-magnetic');
+
+      btn.addEventListener('mousemove', function (e) {
+        const rect = btn.getBoundingClientRect();
+        const btnCenterX = rect.left + rect.width / 2;
+        const btnCenterY = rect.top + rect.height / 2;
+
+        const deltaX = (e.clientX - btnCenterX) * 0.28;
+        const deltaY = (e.clientY - btnCenterY) * 0.28;
+
+        btn.style.transform = `translate3d(${deltaX}px, ${deltaY}px, 0)`;
+      });
+
+      btn.addEventListener('mouseleave', function () {
+        btn.style.transform = 'translate3d(0, 0, 0)';
+      });
+    });
+  }
+
+  // --------------------------------------------------------------------------
   // 11. INITIALIZATION ON DOM READY
   // --------------------------------------------------------------------------
   document.addEventListener('DOMContentLoaded', function () {
@@ -1044,5 +1264,10 @@ Status:       Recommended for Top Capstone Honor Award`);
     initDeveloperTerminal();
     initArchModal();
     initCounterAnimation();
+    initTypingRole();
+    initLiveStatusClock();
+    initAmbientSpotlightAndCursor();
+    initFloatingDock();
+    initMagneticButtons();
   });
 })();
